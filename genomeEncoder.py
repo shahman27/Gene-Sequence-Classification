@@ -10,12 +10,15 @@ def one_hot_encode(seq):
 file_directory = '/Users/dhruvshah/Projects/Gene-Sequencing-Model/Gene-Sequence-Classification/Genome Sequences/'
 file_paths = get_file_names(file_directory)
 
+encodings = []
+
+for genome in file_paths:
+    sequences = list(SeqIO.parse(genome, 'fasta'))
+    # Example: Process and encode the first sequence
+    if sequences:
+        seq = sequences[0].seq
+        encoded_seq = one_hot_encode(seq)
+        encodings.append(encoded_seq)
 
 
-sequences = list(SeqIO.parse(file_path, 'fasta'))
-
-# Example: Process and encode the first sequence
-if sequences:
-    seq = sequences[0].seq
-    encoded_seq = one_hot_encode(seq)
-    print(encoded_seq)
+print(encodings)
