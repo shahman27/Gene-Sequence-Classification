@@ -12,17 +12,22 @@ file_paths = get_file_names(file_directory)
 
 encodings = []
 
-for file in file_paths:
-    genome_dict = {}
-    with open(file, 'r') as file:
-        for sequence in SeqIO.parse(file, 'fasta'):        
-            # Example: Process and encode the first sequence
-            if sequence:
-                seq = sequence[0].seq
-                encoded_seq = one_hot_encode(seq)
-                encodings.append(encoded_seq)
+# for file in file_paths:
+#     genome_dict = {}
+#     with open(file, 'r') as file:
+#         for sequence in SeqIO.parse(file, 'fasta'):        
+#             # Example: Process and encode the first sequence
+#             encoded_seq = one_hot_encode(sequence)
+#             encodings.append(encoded_seq)
 
-print(file_paths[0])
-# print(len(encodings[0])) 
+current_file = file_paths[1]
+with open(current_file, 'r') as file:
+    for sequence in SeqIO.parse(file, 'fasta'):
+        encoded_seq = one_hot_encode(sequence)
+        encodings.append(encoded_seq)
+
+
+print(file_paths[1])
+print(encodings[0]) 
     
 # print(encodings)
