@@ -1,6 +1,7 @@
 from Bio import SeqIO
 import numpy as np
 from genomeFiles import get_file_names
+from extractSpeciesName import extractName
 
 def one_hot_encode(seq):
     mapping = {'A': [1, 0, 0, 0], 'C': [0, 1, 0, 0], 'G': [0, 0, 1, 0], 'T': [0, 0, 0, 1], 'N': [0, 0, 0, 0]}
@@ -20,14 +21,17 @@ encodings = []
 #             encoded_seq = one_hot_encode(sequence)
 #             encodings.append(encoded_seq)
 
+genome_dict = {}
+species = extractName(file_paths[1])
 current_file = file_paths[1]
 with open(current_file, 'r') as file:
     for sequence in SeqIO.parse(file, 'fasta'):
         encoded_seq = one_hot_encode(sequence)
         encodings.append(encoded_seq)
 
+new_data = {species: encodings[0]}
+genome_dict.update(new_data)
 
-print(file_paths[1])
-print(encodings[0]) 
+print(genome_dict) 
     
 # print(encodings)
