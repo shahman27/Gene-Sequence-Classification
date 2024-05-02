@@ -3,6 +3,7 @@ import numpy as np
 from genomeFiles import get_file_names
 from extractSpeciesName import extractName
 from dotenv import load_dotenv
+from splitData import splitData
 import os
 
 load_dotenv()
@@ -35,6 +36,10 @@ with open(current_file, 'r') as file:
 
 new_data = {species: encodings[0]}
 genome_dict.update(new_data)
+
+test_data, train_data = splitData(encodings)
+
+test_train_data = {'test': test_data, 'train': train_data}
 
 print(genome_dict) 
     
