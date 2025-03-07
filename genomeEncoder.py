@@ -29,7 +29,7 @@ for file in file_paths:
         curr_data = {species: encodings}
         genome_dict.update(curr_data)
     
-print(genome_dict.keys())
+# print(genome_dict.keys())
 # genome_dict = {}
 # species = extractName(file_paths[1])
 # current_file = file_paths[1]
