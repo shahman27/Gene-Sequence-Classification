@@ -4,6 +4,8 @@ from genomeFiles import get_file_names
 from extractSpeciesName import extractName
 from dotenv import load_dotenv
 from splitData import splitData
+from dbDefs import pushToDb
+from dbDefs import printDocs
 import os
 
 load_dotenv()
@@ -28,7 +30,10 @@ for file in file_paths:
             encodings.append(encoded_seq)
         curr_data = {species: encodings}
         genome_dict.update(curr_data)
-    
+
+pushToDb(genome_dict)
+printDocs()
+
 # print(genome_dict.keys())
 # genome_dict = {}
 # species = extractName(file_paths[1])
